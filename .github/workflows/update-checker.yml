@@ -145,7 +145,7 @@ jobs:
             - **Message**: ${{ steps.get-hash.outputs.def_message }}
             - **Link**: <https://github.com/${{ matrix.repo.repo }}/commit/${{ steps.get-hash.outputs.def_hash }}>
           labels: update-checker, defconfig-update
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Trigger build
         if: steps.cache-repo-hash.outputs.cache-hit != 'true' && success()
