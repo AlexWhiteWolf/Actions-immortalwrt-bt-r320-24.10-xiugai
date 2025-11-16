@@ -138,6 +138,10 @@ UPDATE_VERSION() {
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
 #UPDATE_VERSION "sing-box"
+UPDATE_VERSION "luci-app-lucky"
+UPDATE_VERSION "luci-app-passwall"
+UPDATE_VERSION "luci-app-passwall2"
+UPDATE_VERSION "luci-app-store"
 UPDATE_VERSION "luci-app-openclash"
 
 #预置OpenClash内核和数据
