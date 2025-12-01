@@ -4,25 +4,22 @@
 # File name: diy-part1.sh
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
-# Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# 1. 核心：通过修改 feeds.conf.default 来替换 Golang
+# 移除官方 feeds 里的 golang 定义（如果有）
+sed -i '/golang/d' feeds.conf.default
 
-# Add a feed source
-# echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+# 添加 sbwml 的 golang 源
+# 这里的 golang 会在 update feeds 时被拉取到 feeds/golang 目录
+echo 'src-git golang https://github.com/sbwml/packages_lang_golang;22.x' >> feeds.conf.default
+
 
 # =========================================================
 # 1. 优先修复 Golang 环境 (解决 Xray, Docker 等编译失败的关键)
 # =========================================================
 rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+#git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 # 注意：25.x 分支可能对某些旧源码不兼容，建议用 22.x 或 master，或者根据你之前的成功经验保持 25.x
 # 如果你之前用 25.x 成功了，就保留 25.x
