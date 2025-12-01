@@ -5,9 +5,15 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/orgx2812/golang feeds/packages/lang/golang
+
+
 # =========================================================
 # 3. 克隆/替换第三方插件
 # =========================================================
+
+
 
 # Theme Argon
 rm -rf feeds/luci/themes/luci-theme-argon
